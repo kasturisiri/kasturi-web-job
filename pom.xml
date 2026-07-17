@@ -27,15 +27,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
-  <dependencies>
-    <dependency>
-      <groupId>sringcore</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <build>
     <finalName>siri-web-app</finalName>

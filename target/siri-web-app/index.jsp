@@ -1,5 +1,9 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Siri School</title>
+</head>
 <body>
-<h2><%= "Hello World!" %></h2>
+    <h1>Siri School Name is Vasista Vidyaniketan</h1>
 </body>
 </html>
