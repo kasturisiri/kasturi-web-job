@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Siri School</title>
+    <title>Siri's School</title>
 </head>
 <body>
     <h1>Welcome to Siri School</h1>
