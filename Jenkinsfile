@@ -29,12 +29,14 @@ pipeline {
             }
         }
 
-        stage('Code Deploy') {
-            steps {
-                sshagent(['Tomcat-Server-Agent']) {
-                    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@http://34.227.224.202:9090:/home/ec2-user/apache-tomcat-9.0.63/webapps'
-                }
-            }
+     stage('Code Deploy') {
+    steps {
+        sshagent(['Tomcat-Server-Agent']) {
+            sh '''
+            scp -o StrictHostKeyChecking=no target/siri-web-app.war ec2-user@34.227.224.202:/home/ec2-user/apache-tomcat-9.0.63/webapps/
+            '''
         }
+    }
+}
     }
 }
