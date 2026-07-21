@@ -1,15 +1,13 @@
-pipeline{
-  agent any
- stages{
-stage('cloning code'){ 
-steps{
-echo 'cloning git branch..'
-}
-}
-stage('code build'){
-steps{
- echo "code build in progress"
-}
-}
-}
+pipeline {
+    agent {
+        label 'built-in'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
 }
