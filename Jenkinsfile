@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'slave-1' }
 
     environment {
         PATH = "$PATH:/opt/apache-maven-3.6.3/bin"
@@ -29,14 +29,26 @@ pipeline {
             }
         }
 
-     stage('Code Deploy') {
-    steps {
-        sshagent(['Tomcat-Server-Agent']) {
-            sh '''
-            scp -o StrictHostKeyChecking=no target/siri-web-app.war ec2-user@34.227.224.202:/home/ec2-user/apache-tomcat-9.0.63/webapps/
-            '''
+        stage('Code Deploy') {
+            steps {
+                sshagent(['Tomcat-Server-Agent']) {
+                    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@34.227.224.202:/home/ec2-user/apache-tomcat-9.0.118/webapps'
+                }
+            }
         }
     }
-}
+
+    post {
+        success {
+            mail to: 'kasturiveeresh159@gmail.com',
+                 subject: "SUCCESS email",
+                 body: "Good news, the build succeeded!"
+        }
+
+        failure {
+            mail to: 'kasturiveeresh159@gmail.com',
+                 subject: "FAILURE email",
+                 body: "Bad failure, the build did not succeed."
+        }
     }
 }
