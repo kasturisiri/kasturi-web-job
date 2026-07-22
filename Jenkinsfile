@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sshagent(['Tomcat-Server-Agent']) {
                     sh '''
-            scp -o StrictHostKeyChecking=no target/siri-web-app.war ec2-user@100.54.255.149:/home/ec2-user/apache-tomcat-9.0.118/webapps
+            scp -o StrictHostKeyChecking=no target/siri-web-app.war ec2-user@98.81.216.54:/home/ec2-user/apache-tomcat-9.0.118/webapps
             '''
                 }
             }
